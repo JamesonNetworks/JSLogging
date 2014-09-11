@@ -67,6 +67,19 @@ logger.prototype.getLogLevel = function() {
 	return currentLevel;
 };
 
+logger.prototype.warn = function(statement, callback) {
+	logger.log(statement, 4, callback);
+}
+
+logger.prototype.info = function(statement, callback) {
+	logger.log(statement, 6, callback);
+}
+
+logger.prototype.debug = function(statement, callback) {
+	logger.log(statement, 7, callback);
+}
+
+
 logger.prototype.log = function(statement, level, callback) {
 	// console.log('Starting to log statement...');
 	if(level === null || typeof(level) == 'undefined') {
