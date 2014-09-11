@@ -38,7 +38,7 @@ var conf;
 exports = module.exports = new logger();
 
 /**
- * Expose `LibraryManager`.
+ * Expose `logger`.
  */
 
 exports.logger = logger;
@@ -57,31 +57,10 @@ function logger(nConf) {
 	else {
 		// console.log('Log level not defined');
 	}
-}
-
-logger.prototype.setLogLevel = function(level) {
-	currentLevel = level;
 };
 
-logger.prototype.getLogLevel = function() {
-	return currentLevel;
-};
-
-logger.prototype.warn = function(statement, callback) {
-	logger.log(statement, 4, callback);
-}
-
-logger.prototype.info = function(statement, callback) {
-	logger.log(statement, 6, callback);
-}
-
-logger.prototype.debug = function(statement, callback) {
-	logger.log(statement, 7, callback);
-}
-
-
-logger.prototype.log = function(statement, level, callback) {
-	// console.log('Starting to log statement...');
+function log(statement, level, callback) {
+// console.log('Starting to log statement...');
 	if(level === null || typeof(level) == 'undefined') {
 		// console.log('Level was set to null, resetting level to 6...');
 		// Default the log level to info
@@ -146,4 +125,28 @@ logger.prototype.log = function(statement, level, callback) {
 				throw new Error("Invalid log level submitted! Level: " + level + ", Statement: " + statement);
 		}
 	}
+};
+
+logger.prototype.setLogLevel = function(level) {
+	currentLevel = level;
+};
+
+logger.prototype.getLogLevel = function() {
+	return currentLevel;
+};
+
+logger.prototype.warn = function(statement, callback) {
+	log(statement, 4, callback);
+};
+
+logger.prototype.info = function(statement, callback) {
+	log(statement, 6, callback);
+};
+
+logger.prototype.debug = function(statement, callback) {
+	log(statement, 7, callback);
+};
+
+logger.prototype.log = function(statement, level, callback) {
+	log(statement, level, callback);
 };
