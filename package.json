@@ -16,6 +16,9 @@
     "type": "git",
     "url": "https://github.com/JamesonNetworks/JSLogging.git"
   },
+  "dependencies": {
+    "colors": "0.6.x"
+  },
   "keywords": [
     "logging",
     "javascript",
